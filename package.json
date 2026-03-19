@@ -12,7 +12,9 @@
     "emu:clean": "rm -rf emulator/build public/wasm/binjgb.js public/wasm/binjgb.wasm",
     "rom:build": "bash scripts/build-rom.sh",
     "rom:clean": "rm -rf rom/build public/roms/pokered.gb public/roms/pokered.sym",
-    "typecheck": "tsc --noEmit"
+    "typecheck": "tsc --noEmit",
+    "deploy": "wrangler deploy",
+    "ship": "bun run build && bun run deploy"
   },
   "devDependencies": {
     "@tailwindcss/vite": "^4.2.1",
@@ -22,7 +24,8 @@
     "tailwindcss": "^4.2.1",
     "typescript": "^5.9.3",
     "vite": "^8.0.0",
-    "vite-plugin-pwa": "^1.2.0"
+    "vite-plugin-pwa": "^1.2.0",
+    "wrangler": "^4.75.0"
   },
   "dependencies": {
     "@pwa-kit/sdk": "^0.1.2",
