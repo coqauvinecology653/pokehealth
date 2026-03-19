@@ -51,9 +51,18 @@ Open `http://localhost:5173`. The game auto-boots into Red's room. Use the Debug
 ### Deploy
 
 ```bash
-bun run build
-# Deploy the dist/ directory to any static host (Cloudflare Pages, Vercel, etc.)
+bun run ship    # build everything + deploy to Cloudflare Workers
 ```
+
+### iOS app
+
+The native iOS wrapper is built with [pwa-kit](https://github.com/eddmann/pwa-kit), which provides the HealthKit bridge. To configure a fresh clone:
+
+```bash
+npx @pwa-kit/cli init ios --url "https://pokehealth.eddmann.workers.dev/" --features "healthkit"
+```
+
+Then open the generated Xcode project in `ios/`, and build to a device or simulator.
 
 ## Project structure
 
